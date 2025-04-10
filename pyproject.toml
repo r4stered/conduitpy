@@ -1,0 +1,57 @@
+[project]
+name = "conduit-py"
+description = "A python wrapper for AdvantageKit's conduit library"
+version = "4.1.12"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [ ]
+
+  [project.license]
+  file = "LICENSE.txt"
+
+  [project.urls]
+  Documentation = "https://github.com/Mechanical-Advantage/AdvantageKit"
+
+[build-system]
+requires = [
+  "nanobind",
+  "py-build-cmake~=0.4.2",
+  "pybind11-mkdoc",
+  "typing_extensions; python_version < '3.11'"
+]
+build-backend = "py_build_cmake.build"
+
+[tool.py-build-cmake.cmake]
+build_type = "Release"
+source_path = "."
+build_args = [ "--target", "_conduitpy" ]
+install_components = [ "python_modules" ]
+install_args = [ ]
+
+  [tool.py-build-cmake.cmake.options]
+  BUILD_TESTING = "OFF"
+  BUILD_PYTHON = "ON"
+
+[tool.py-build-cmake.module]
+name = "conduitpy"
+directory = "."
+
+[tool.py-build-cmake.sdist]
+include = [
+  "CMakeLists.txt",
+  "ConduitConfig.cmake.in",
+  "cmake/modules/*.cmake",
+  "cmake/*.py",
+  "conduitpy/*",
+  "include/*",
+  "src/*"
+]
+exclude = [ ]
+
+[tool.py-build-cmake.wheel]
+platform_tag = "guess"
+
+[dependency-groups]
+dev = [
+    "build>=1.2.2.post1",
+]

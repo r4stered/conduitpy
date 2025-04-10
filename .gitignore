@@ -1,0 +1,24 @@
+build*/
+.DS_Store
+
+# Visual Studio Code
+.vscode/settings.json
+
+# CMake
+CMakeUserPresets.json
+
+# compile_commands
+compile_commands.json
+
+# clangd cache
+.clangd/
+.cache/
+
+# Python
+*.egg-info/
+.eggs/
+.py-build-cmake_cache/
+.pytest_cache/
+.tox/
+__pycache__/
+dist/

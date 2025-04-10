@@ -1,0 +1,22 @@
+cppHeaderFileInclude {
+  \.h$
+  \.hpp$
+}
+
+cppSrcFileInclude {
+  \.cc$
+  \.cpp$
+}
+
+modifiableFileExclude {
+  \.patch$
+  \.png$
+  \.svg$
+  conduitpy/cpp/docstrings\.h$
+  conduitpy/py\.typed$
+}
+
+includeOtherLibs {
+  ^nanobind/
+  ^conduit/
+}

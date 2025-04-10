@@ -1,0 +1,7 @@
+cppHeaderFileInclude {
+  \.h$
+}
+
+cppSrcFileInclude {
+  \.cc$
+}
