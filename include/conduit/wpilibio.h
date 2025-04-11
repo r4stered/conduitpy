@@ -15,8 +15,6 @@
 
 #include <cstdint>
 
-
-
 namespace akit::conduit::wpilibio {
 
 // Size of the data exchange buffer (CoreInputs) to use

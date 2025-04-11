@@ -11,6 +11,8 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 
+#pragma once
+
 #include <cstdint>
 
 #define PDP_STATUS_1 0x50
