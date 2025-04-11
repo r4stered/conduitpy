@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "conduit/rev/PDHFrames.h"
+#include "rev/PDHFrames.h"
 
 #define PDH_STATUS_0_API_ID ((PDH_STATUS_0_FRAME_ID >> 6) & 0x3FF)
 #define PDH_STATUS_1_API_ID ((PDH_STATUS_1_FRAME_ID >> 6) & 0x3FF)
