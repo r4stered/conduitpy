@@ -13,10 +13,10 @@ static_assert(FLATBUFFERS_VERSION_MAJOR == 24 &&
               FLATBUFFERS_VERSION_REVISION == 25,
              "Non-compatible flatbuffers version included");
 
-namespace org {
-namespace littletonrobotics {
-namespace conduit {
-namespace schema {
+
+
+
+namespace org::littletonrobotics::conduit::schema {
 
 struct Joystick;
 
@@ -1256,9 +1256,9 @@ inline const ::flatbuffers::TypeTable *CoreInputsTypeTable() {
   return &tt;
 }
 
-}  // namespace schema
-}  // namespace conduit
-}  // namespace littletonrobotics
-}  // namespace org
+} // namespace org::littletonrobotics::conduit::schema
+
+
+
 
 #endif  // FLATBUFFERS_GENERATED_CONDUITSCHEMA_ORG_LITTLETONROBOTICS_CONDUIT_SCHEMA_H_

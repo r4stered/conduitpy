@@ -14,7 +14,6 @@
 #pragma once
 
 #include "conduit_schema_generated.h"
-using namespace org::littletonrobotics::conduit;
 
 #include <hal/CANAPITypes.h>
 #include <hal/HALBase.h>
@@ -33,12 +32,12 @@ using namespace org::littletonrobotics::conduit;
 // structure
 class PDPReader {
  public:
-  void read(schema::PDPData* pdp_buf);
+  void read(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
 
  private:
-  void update_ctre_pdp_data(schema::PDPData* pdp_buf);
-  void update_rev_pdh_data(schema::PDPData* pdp_buf);
-  void update_sim_data(schema::PDPData* pdp_buf);
+  void update_ctre_pdp_data(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
+  void update_rev_pdh_data(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
+  void update_sim_data(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
 
   HAL_PowerDistributionHandle pd_handle;
   HAL_CANHandle pd_can_handle;

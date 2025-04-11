@@ -14,7 +14,6 @@
 #pragma once
 
 #include "conduit_schema_generated.h"
-using namespace org::littletonrobotics::conduit;
 
 #include <atomic>
 #include <mutex>
@@ -24,5 +23,5 @@ using namespace org::littletonrobotics::conduit;
 // be aligned with the main loop cycle.
 class DsReader {
  public:
-  void read(schema::DSData* ds_buf);
+  void read(org::littletonrobotics::conduit::schema::DSData* ds_buf);
 };

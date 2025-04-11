@@ -10,11 +10,12 @@
 #include "conduit/wpilibio.h"
 #include "conduit/conduit_schema_generated.h"
 
+#include <string>
+
 namespace nb = nanobind;
-using namespace org::littletonrobotics::conduit;
 
 // Helper function to convert schema::Joystick to Python dictionary
-nb::dict joystick_to_dict(const schema::Joystick* joystick) {
+inline nb::dict joystick_to_dict(const org::littletonrobotics::conduit::schema::Joystick* joystick) {
     nb::dict result;
     
     // Convert name to string (handle null termination properly)
@@ -59,7 +60,7 @@ nb::dict joystick_to_dict(const schema::Joystick* joystick) {
 }
 
 // Helper function to convert schema::DSData to Python dictionary
-nb::dict dsdata_to_dict(const schema::DSData* ds_data) {
+inline nb::dict dsdata_to_dict(const org::littletonrobotics::conduit::schema::DSData* ds_data) {
     nb::dict result;
     
     result["alliance_station"] = ds_data->alliance_station();
@@ -87,7 +88,7 @@ nb::dict dsdata_to_dict(const schema::DSData* ds_data) {
     // Convert joysticks
     nb::list joysticks;
     for (int i = 0; i < ds_data->joysticks()->size(); i++) {
-        const schema::Joystick* joystick = reinterpret_cast<const schema::Joystick*>(&ds_data->joysticks()->Data()[i]);
+        const org::littletonrobotics::conduit::schema::Joystick* joystick = reinterpret_cast<const org::littletonrobotics::conduit::schema::Joystick*>(&ds_data->joysticks()->Data()[i]);
         joysticks.append(joystick_to_dict(joystick));
     }
     result["joysticks"] = joysticks;
@@ -96,7 +97,7 @@ nb::dict dsdata_to_dict(const schema::DSData* ds_data) {
 }
 
 // Helper function to convert schema::PDPData to Python dictionary
-nb::dict pdpdata_to_dict(const schema::PDPData* pdp_data) {
+inline nb::dict pdpdata_to_dict(const org::littletonrobotics::conduit::schema::PDPData* pdp_data) {
     nb::dict result;
     
     result["handle"] = pdp_data->handle();
@@ -123,7 +124,7 @@ nb::dict pdpdata_to_dict(const schema::PDPData* pdp_data) {
 }
 
 // Helper function to convert schema::CANStatus to Python dictionary
-nb::dict canstatus_to_dict(const schema::CANStatus* can_status) {
+inline nb::dict canstatus_to_dict(const org::littletonrobotics::conduit::schema::CANStatus* can_status) {
     nb::dict result;
     
     result["percent_bus_utilization"] = can_status->percent_bus_utilization();
@@ -136,7 +137,7 @@ nb::dict canstatus_to_dict(const schema::CANStatus* can_status) {
 }
 
 // Helper function to convert schema::SystemData to Python dictionary
-nb::dict systemdata_to_dict(const schema::SystemData* sys_data) {
+inline nb::dict systemdata_to_dict(const org::littletonrobotics::conduit::schema::SystemData* sys_data) {
     nb::dict result;
     
     result["fpga_version"] = sys_data->fpga_version();
@@ -188,7 +189,7 @@ nb::dict systemdata_to_dict(const schema::SystemData* sys_data) {
 }
 
 // Helper function to convert schema::CoreInputs to Python dictionary
-nb::dict coreinputs_to_dict(const schema::CoreInputs* core_inputs) {
+inline nb::dict coreinputs_to_dict(const org::littletonrobotics::conduit::schema::CoreInputs* core_inputs) {
     nb::dict result;
     
     result["timestamp"] = core_inputs->timestamp();
@@ -205,7 +206,7 @@ public:
     PyDsReader() : reader_() {}
     
     nb::dict read() {
-        schema::DSData data;
+        org::littletonrobotics::conduit::schema::DSData data;
         reader_.read(&data);
         return dsdata_to_dict(&data);
     }
@@ -219,7 +220,7 @@ public:
     PyPDPReader() : reader_() {}
     
     nb::dict read() {
-        schema::PDPData data;
+        org::littletonrobotics::conduit::schema::PDPData data;
         reader_.read(&data);
         return pdpdata_to_dict(&data);
     }
@@ -233,7 +234,7 @@ public:
     PySystemReader() : reader_() {}
     
     nb::dict read() {
-        schema::SystemData data;
+        org::littletonrobotics::conduit::schema::SystemData data;
         reader_.read(&data);
         return systemdata_to_dict(&data);
     }
@@ -254,7 +255,7 @@ public:
     
     nb::dict capture_data() {
         akit::conduit::wpilibio::capture_data();
-        schema::CoreInputs* data = static_cast<schema::CoreInputs*>(akit::conduit::wpilibio::shared_buf);
+        org::littletonrobotics::conduit::schema::CoreInputs* data = static_cast<org::littletonrobotics::conduit::schema::CoreInputs*>(akit::conduit::wpilibio::shared_buf);
         return coreinputs_to_dict(data);
     }
     

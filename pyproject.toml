@@ -54,4 +54,5 @@ platform_tag = "guess"
 [dependency-groups]
 dev = [
     "build>=1.2.2.post1",
+    "wpiformat>=2025.33",
 ]

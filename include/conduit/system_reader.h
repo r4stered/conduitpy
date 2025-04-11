@@ -14,7 +14,6 @@
 #pragma once
 
 #include "conduit_schema_generated.h"
-using namespace org::littletonrobotics::conduit;
 
 #include <hal/PowerDistribution.h>
 
@@ -26,7 +25,7 @@ using namespace org::littletonrobotics::conduit;
 // there are no periodic updates (unlike DS and PD data).
 class SystemReader {
  public:
-  void read(schema::SystemData* system_buf);
+  void read(org::littletonrobotics::conduit::schema::SystemData* system_buf);
 
  private:
   uint64_t cycleCount = 0;

@@ -29,7 +29,7 @@
 
 using namespace std::chrono_literals;
 
-void SystemReader::read(schema::SystemData* system_buf) {
+void SystemReader::read(org::littletonrobotics::conduit::schema::SystemData* system_buf) {
   std::int32_t status;
 
   // Update values that shouldn't change after initial cycle

@@ -15,9 +15,9 @@
 
 #include <cstdint>
 
-namespace akit {
-namespace conduit {
-namespace wpilibio {
+
+
+namespace akit::conduit::wpilibio {
 
 // Size of the data exchange buffer (CoreInputs) to use
 static const int BUF_SIZE = 100000;
@@ -33,6 +33,5 @@ void make_buffer();
 // Captures data into the shared buffer
 void capture_data();
 
-}  // namespace wpilibio
-}  // namespace conduit
-}  // namespace akit
+} // namespace akit::conduit::wpilibio
+

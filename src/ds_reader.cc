@@ -25,11 +25,11 @@
 
 static const int NUM_JOYSTICKS = 6;
 
-void DsReader::read(schema::DSData* ds_buf) {
+void DsReader::read(org::littletonrobotics::conduit::schema::DSData* ds_buf) {
   std::int32_t status;
 
   int32_t control_word;
-  HAL_GetControlWord((HAL_ControlWord*)&control_word);
+  HAL_GetControlWord(reinterpret_cast<HAL_ControlWord*>(&control_word));
 
   uint8_t alliance_station = HAL_GetAllianceStation(&status);
 
@@ -38,14 +38,14 @@ void DsReader::read(schema::DSData* ds_buf) {
 
   double match_time = HAL_GetMatchTime(&status);
 
-  schema::Joystick stick_bufs[NUM_JOYSTICKS];
+  org::littletonrobotics::conduit::schema::Joystick stick_bufs[NUM_JOYSTICKS];
 
   for (int joystickNum = 0; joystickNum < ds_buf->joysticks()->size();
        joystickNum++) {
     HAL_JoystickDescriptor jd;
     HAL_GetJoystickDescriptor(joystickNum, &jd);
 
-    schema::Joystick* stick_buf = &stick_bufs[joystickNum];
+    org::littletonrobotics::conduit::schema::Joystick* stick_buf = &stick_bufs[joystickNum];
 
     std::memcpy(stick_buf->mutable_name()->Data(), jd.name,
                 stick_buf->name()->size());
@@ -91,5 +91,5 @@ void DsReader::read(schema::DSData* ds_buf) {
               ds_buf->event_name()->size());
 
   std::memcpy(ds_buf->mutable_joysticks()->Data(), stick_bufs,
-              ds_buf->joysticks()->size() * sizeof(schema::Joystick));
+              ds_buf->joysticks()->size() * sizeof(org::littletonrobotics::conduit::schema::Joystick));
 }

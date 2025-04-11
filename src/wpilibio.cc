@@ -26,13 +26,13 @@
 #include "conduit/system_reader.h"
 #include "conduit/conduit_schema_generated.h"
 
-namespace akit {
-namespace conduit {
-namespace wpilibio {
+
+
+namespace akit::conduit::wpilibio {
 
 using namespace org::littletonrobotics::conduit;
 
-void* shared_buf = 0;
+void* shared_buf = nullptr;
 schema::CoreInputs* corein_view;
 schema::DSData* ds_view;
 schema::PDPData* pdp_view;
@@ -64,6 +64,5 @@ void capture_data(void) {
   sys_reader.read(sys_view);
 }
 
-}  // namespace wpilibio
-}  // namespace conduit
-}  // namespace akit
+} // namespace akit::conduit::wpilibio
+

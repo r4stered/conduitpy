@@ -34,7 +34,7 @@ using namespace std::chrono_literals;
 
 #define MAX_CHANNEL_COUNT 24
 
-void PDPReader::read(schema::PDPData* pdp_buf) {
+void PDPReader::read(org::littletonrobotics::conduit::schema::PDPData* pdp_buf) {
 #ifdef AKIT_ATHENA
   if (pd_type == HAL_PowerDistributionType_kCTRE) {
     update_ctre_pdp_data(pdp_buf);
@@ -304,7 +304,7 @@ void PDPReader::update_rev_pdh_data(schema::PDPData* pdp_buf) {
 
 #endif
 
-void PDPReader::update_sim_data(schema::PDPData* pdp_buf) {
+void PDPReader::update_sim_data(org::littletonrobotics::conduit::schema::PDPData* pdp_buf) {
   int32_t status;
 
   HAL_PowerDistributionFaults faults;
