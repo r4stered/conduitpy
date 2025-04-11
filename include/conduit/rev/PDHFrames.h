@@ -11,7 +11,8 @@
 extern "C" {
 #endif
 
-#include <cstdint>
+#include <stdint.h>
+
 #include <cstddef>
 
 #ifndef EINVAL
