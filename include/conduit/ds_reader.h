@@ -1,4 +1,5 @@
 // Copyright 2021-2025 FRC 6328
+
 // http://github.com/Mechanical-Advantage
 //
 // This program is free software; you can redistribute it and/or
@@ -13,11 +14,11 @@
 
 #pragma once
 
-#include "conduit_schema_generated.h"
-
 #include <atomic>
 #include <mutex>
 #include <thread>
+
+#include "conduit_schema_generated.h"
 
 // Reads data from the driver station. The data is synchronously because it must
 // be aligned with the main loop cycle.

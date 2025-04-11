@@ -1,4 +1,5 @@
 // Copyright 2021-2025 FRC 6328
+
 // http://github.com/Mechanical-Advantage
 //
 // This program is free software; you can redistribute it and/or
@@ -18,19 +19,20 @@
 #include <hal/HALBase.h>
 #include <hal/Power.h>
 #include <hal/PowerDistribution.h>
+#include <stdint.h>
 #include <wpi/StackTrace.h>
 #include <wpi/timestamp.h>
 
 #include <chrono>
-#include <cstdint>
 #include <cstring>
 #include <iostream>
 #include <mutex>
 
 using namespace std::chrono_literals;
 
-void SystemReader::read(org::littletonrobotics::conduit::schema::SystemData* system_buf) {
-  std::int32_t status;
+void SystemReader::read(
+    org::littletonrobotics::conduit::schema::SystemData* system_buf) {
+  int32_t status;
 
   // Update values that shouldn't change after initial cycle
   if (cycleCount == 0) {

@@ -1,4 +1,5 @@
 // Copyright 2021-2025 FRC 6328
+
 // http://github.com/Mechanical-Advantage
 //
 // This program is free software; you can redistribute it and/or
@@ -15,9 +16,9 @@
 
 #include <hal/DriverStation.h>
 #include <hal/HALBase.h>
+#include <stdint.h>
 
 #include <chrono>
-#include <cstdint>
 #include <cstring>
 #include <iostream>
 #include <mutex>
@@ -26,7 +27,7 @@
 static const int NUM_JOYSTICKS = 6;
 
 void DsReader::read(org::littletonrobotics::conduit::schema::DSData* ds_buf) {
-  std::int32_t status;
+  int32_t status;
 
   int32_t control_word;
   HAL_GetControlWord(reinterpret_cast<HAL_ControlWord*>(&control_word));
@@ -45,7 +46,8 @@ void DsReader::read(org::littletonrobotics::conduit::schema::DSData* ds_buf) {
     HAL_JoystickDescriptor jd;
     HAL_GetJoystickDescriptor(joystickNum, &jd);
 
-    org::littletonrobotics::conduit::schema::Joystick* stick_buf = &stick_bufs[joystickNum];
+    org::littletonrobotics::conduit::schema::Joystick* stick_buf =
+        &stick_bufs[joystickNum];
 
     std::memcpy(stick_buf->mutable_name()->Data(), jd.name,
                 stick_buf->name()->size());
@@ -91,5 +93,6 @@ void DsReader::read(org::littletonrobotics::conduit::schema::DSData* ds_buf) {
               ds_buf->event_name()->size());
 
   std::memcpy(ds_buf->mutable_joysticks()->Data(), stick_bufs,
-              ds_buf->joysticks()->size() * sizeof(org::littletonrobotics::conduit::schema::Joystick));
+              ds_buf->joysticks()->size() *
+                  sizeof(org::littletonrobotics::conduit::schema::Joystick));
 }

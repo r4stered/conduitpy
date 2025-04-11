@@ -1,4 +1,5 @@
 // Copyright 2021-2025 FRC 6328
+
 // http://github.com/Mechanical-Advantage
 //
 // This program is free software; you can redistribute it and/or
@@ -13,7 +14,7 @@
 
 #pragma once
 
-#include <cstdint>
+#include <stdint.h>
 
 #define PDP_STATUS_1 0x50
 #define PDP_STATUS_2 0x51

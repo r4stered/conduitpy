@@ -1,4 +1,5 @@
 // Copyright 2021-2025 FRC 6328
+
 // http://github.com/Mechanical-Advantage
 //
 // This program is free software; you can redistribute it and/or
@@ -13,8 +14,6 @@
 
 #pragma once
 
-#include "conduit_schema_generated.h"
-
 #include <hal/CANAPITypes.h>
 #include <hal/HALBase.h>
 #include <hal/PowerDistribution.h>
@@ -22,6 +21,8 @@
 #include <atomic>
 #include <mutex>
 #include <thread>
+
+#include "conduit_schema_generated.h"
 
 // Reads data from the power distribution panel.  The data is read in a thread
 // and copied into a schema::PDPData internal buffer.  This copying is done
@@ -35,9 +36,12 @@ class PDPReader {
   void read(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
 
  private:
-  void update_ctre_pdp_data(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
-  void update_rev_pdh_data(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
-  void update_sim_data(org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
+  void update_ctre_pdp_data(
+      org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
+  void update_rev_pdh_data(
+      org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
+  void update_sim_data(
+      org::littletonrobotics::conduit::schema::PDPData* pdp_buf);
 
   HAL_PowerDistributionHandle pd_handle;
   HAL_CANHandle pd_can_handle;

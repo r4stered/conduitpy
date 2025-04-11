@@ -1,4 +1,5 @@
 // Copyright 2021-2025 FRC 6328
+
 // http://github.com/Mechanical-Advantage
 //
 // This program is free software; you can redistribute it and/or
@@ -13,13 +14,13 @@
 
 #pragma once
 
-#include "conduit_schema_generated.h"
-
 #include <hal/PowerDistribution.h>
 
 #include <atomic>
 #include <mutex>
 #include <thread>
+
+#include "conduit_schema_generated.h"
 
 // Reads system stats data from the RIO. The data is read synchronously as
 // there are no periodic updates (unlike DS and PD data).

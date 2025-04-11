@@ -1,4 +1,5 @@
 // Copyright 2021-2025 FRC 6328
+
 // http://github.com/Mechanical-Advantage
 //
 // This program is free software; you can redistribute it and/or
@@ -16,17 +17,15 @@
 #include <hal/DriverStation.h>
 #include <hal/DriverStationTypes.h>
 #include <hal/HALBase.h>
-#include <stdlib.h>
+#include <stdint.h>
 
-#include <cstdint>
+#include <cstdlib>
 #include <iostream>
 
+#include "conduit/conduit_schema_generated.h"
 #include "conduit/ds_reader.h"
 #include "conduit/pdp_reader.h"
 #include "conduit/system_reader.h"
-#include "conduit/conduit_schema_generated.h"
-
-
 
 namespace akit::conduit::wpilibio {
 
@@ -46,7 +45,7 @@ void start() {}
 
 void make_buffer() {
   // Allocate shared buffer
-  shared_buf = malloc(BUF_SIZE);
+  shared_buf = std::malloc(BUF_SIZE);
 
   // Point view pointers at the buffer at the right offset
   corein_view = reinterpret_cast<schema::CoreInputs*>(shared_buf);
@@ -56,7 +55,7 @@ void make_buffer() {
 }
 
 void capture_data(void) {
-  std::int32_t status;
+  int32_t status;
 
   corein_view->mutate_timestamp(HAL_GetFPGATime(&status));
   ds_reader.read(ds_view);
@@ -64,5 +63,4 @@ void capture_data(void) {
   sys_reader.read(sys_view);
 }
 
-} // namespace akit::conduit::wpilibio
-
+}  // namespace akit::conduit::wpilibio
